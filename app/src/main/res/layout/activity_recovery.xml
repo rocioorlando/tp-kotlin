@@ -6,18 +6,16 @@
     android:padding="16dp"
     android:gravity="center"
     android:background="@android:color/white"
-    android:paddingBottom="16dp"> <!-- Añadido paddingBottom aquí -->
+    android:paddingBottom="16dp">
 
-    <!-- Logo -->
     <ImageView
         android:id="@+id/logo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:src="@drawable/ic_launcher_foreground"
         android:layout_gravity="center"
-        android:layout_marginBottom="24dp"/> <!-- Utilizando layout_marginBottom -->
+        android:layout_marginBottom="24dp"/>
 
-    <!-- Campo de texto para ingresar correo electrónico -->
     <EditText
         android:id="@+id/email"
         android:layout_width="match_parent"
@@ -25,28 +23,26 @@
         android:hint="Correo electrónico"
         android:inputType="textEmailAddress"
         android:padding="12dp"
-        android:layout_marginBottom="24dp"/> <!-- Utilizando layout_marginBottom -->
+        android:layout_marginBottom="24dp"/>
 
-    <!-- Botón para enviar el correo de recuperación -->
     <Button
         android:id="@+id/sendEmailButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Enviar correo de recuperación"
+        android:text="Enviar email de recuperación"
         android:background="@color/blue"
-        android:textColor="@android:color/white"
+        android:textColor="@android:color/black"
         android:padding="12dp"
-        android:layout_marginBottom="16dp"/> <!-- Utilizando layout_marginBottom -->
+        android:layout_marginBottom="16dp"/>
 
-    <!-- Botón para volver a la pantalla de inicio de sesión -->
     <Button
         android:id="@+id/backButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Volver al inicio de sesión"
+        android:text="Volver"
         android:background="@color/gray"
         android:textColor="@android:color/black"
         android:padding="12dp"
-        android:layout_marginBottom="16dp"/> <!-- Utilizando layout_marginBottom -->
+        android:layout_marginBottom="16dp"/>
 
 </LinearLayout>

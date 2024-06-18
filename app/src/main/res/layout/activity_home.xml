@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp"
+    tools:context=".HomeActivity">
+
+    <Button
+        android:id="@+id/btnExamsInscription"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Inscripción a exámenes" />
+
+    <Button
+        android:id="@+id/btnMyInscriptions"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Mis incripciones" />
+
+    <Button
+        android:id="@+id/btnStudentProfile"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Perfil del estudiante" />
+
+    <Button
+        android:id="@+id/btnAPIs"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="APIs" />
+</LinearLayout>
