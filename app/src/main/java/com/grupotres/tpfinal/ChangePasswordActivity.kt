@@ -16,14 +16,17 @@ class ChangePasswordActivity : ComponentActivity() {
         //Establece el contenido de la actividad a un diseño específico
         setContentView(R.layout.activity_change_password)
 
+        // this : contexto actual
         myPreferences = MyPreferences(this)
 
+        // Obtiene referencias a los elementos de la interfaz de usuario (campos de texto y botones) del layout activity_change_password utilizando findViewById.
         val currentPassword: EditText = findViewById(R.id.currentPassword)
         val newPassword: EditText = findViewById(R.id.newPassword)
         val confirmPassword: EditText = findViewById(R.id.confirmPassword)
         val btnChangePassword: Button = findViewById(R.id.btnChangePassword)
         val btnBack: Button = findViewById(R.id.btnBack)
 
+        // listener, solo se llama cuando hace click
         btnChangePassword.setOnClickListener {
             val currentPassword = currentPassword.text.toString()
             val newPassword = newPassword.text.toString()
@@ -34,11 +37,14 @@ class ChangePasswordActivity : ComponentActivity() {
             }
         }
 
+        // cuando se hace click finaliza la actividad
         btnBack.setOnClickListener {
             finish()
         }
     }
 
+    // Este método valida las contraseñas. Comprueba si el usuario existe, si la contraseña actual es correcta y 
+    // si la nueva contraseña coincide con la confirmación. Muestra mensajes Toast en caso de errores.
     private fun validatePasswords(currentPassword: String, newPassword: String, confirmPassword: String): Boolean {
         val user = myPreferences.getLogin()
         return when {
@@ -58,6 +64,9 @@ class ChangePasswordActivity : ComponentActivity() {
         }
     }
 
+    // Este método actualiza la contraseña del usuario. Si el usuario existe, actualiza su contraseña y 
+    // guarda los cambios en MyPreferences. Muestra un Toast indicando que la contraseña se cambió exitosamente, 
+    // y luego inicia MainActivity y finaliza la actividad actual.
     private fun updatePassword(newPassword: String) {
         val user = myPreferences.getLogin()
         var session = myPreferences.getSession();

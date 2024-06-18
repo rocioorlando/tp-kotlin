@@ -24,15 +24,22 @@ class InscriptionActivity : ComponentActivity() {
         val btnViewInscriptions: Button = findViewById(R.id.btnViewInscriptions)
         val btnBackHome: Button = findViewById(R.id.btnBackHome)
 
+        // se definen los array de datos
         val subjects = arrayOf("Programacion I", "Estadística", "Arquitectura", "Inglés")
         val calls = arrayOf("Primer llamado", "Segundo llamado", "Tercer llamado")
 
+        // ArrayAdapter se usa para llenar los Spinner con los datos de los array
+        // ArrayAdapter(this, android.R.layout.simple_spinner_item, subjects) crea un adaptador para el 
+        // Spinner de materias, usando un diseño de lista simple proporcionado por Android (android.R.layout.simple_spinner_item).
         val adapterSubject = ArrayAdapter(this, android.R.layout.simple_spinner_item, subjects)
         val adapterCalls = ArrayAdapter(this, android.R.layout.simple_spinner_item, calls)
 
+        // setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item) establece el diseño que 
+        // se utilizará para mostrar las opciones desplegables del Spinner. En este caso es el predeterminado de Android
         adapterSubject.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
         adapterCalls.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
 
+        // spinnerSubject.adapter = adapterSubject asigna el adaptador de materias al Spinner de materias (spinnerSubject).
         spinnerSubject.adapter = adapterSubject
         spinnerCalls.adapter = adapterCalls
 

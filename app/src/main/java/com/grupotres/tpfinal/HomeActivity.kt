@@ -9,6 +9,9 @@ class HomeActivity : ComponentActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        // setContentView: Este método se utiliza para establecer el diseño de la actividad
+        // R.layout.activity_home: R es una clase generada automáticamente por Android que contiene referencias a todos los recursos de la aplicación.
         setContentView(R.layout.activity_home)
 
         val btnExamsInscription: Button = findViewById(R.id.btnExamsInscription)
