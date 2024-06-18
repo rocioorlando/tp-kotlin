@@ -9,6 +9,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.TpFinal">
 
+        // aca hay que registrar todas las actividades que vamos creando
         <activity
             android:name=".MainActivity"
             android:exported="true">
