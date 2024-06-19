@@ -1,6 +1,7 @@
 package com.grupotres.tpfinal
 
 import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.widget.ArrayAdapter
 import android.widget.Button
@@ -67,6 +68,31 @@ class InscriptionActivity : ComponentActivity() {
     }
 
     private fun sendEmail(inscription: String) {
-        // vamo a ver como hacemos
+        val email = "destinatario@ejemplo.com"  // Reemplaza esto con el correo del destinatario
+        val subject = "Confirmación de Inscripción"
+        val message = """
+            Hola,
+
+            Tu inscripción ha sido registrada exitosamente. Aquí tienes los detalles de tu inscripción:
+
+            Materia y Llamado: $inscription
+
+            Gracias por inscribirte.
+
+            Saludos,
+            El Equipo de Inscripción
+        """.trimIndent()
+
+        val intent = Intent(Intent.ACTION_SENDTO).apply {
+            data = Uri.parse("mailto:")
+            putExtra(Intent.EXTRA_EMAIL, arrayOf(email))
+            putExtra(Intent.EXTRA_SUBJECT, subject)
+            putExtra(Intent.EXTRA_TEXT, message)
+        }
+        try {
+            startActivity(Intent.createChooser(intent, "Elige una aplicación de correo"))
+        } catch (e: Exception) {
+            Toast.makeText(this, "No hay aplicaciones de correo instaladas.", Toast.LENGTH_SHORT).show()
+        }
     }
 }

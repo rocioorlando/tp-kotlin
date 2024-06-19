@@ -1,5 +1,7 @@
 package com.grupotres.tpfinal
 
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
@@ -34,18 +36,60 @@ class RecoveryActivity : ComponentActivity() {
         }
     }
 
-    private fun sendEmail(email: String) {
-        Toast.makeText(this, "Se envió un email de recuperación a $email", Toast.LENGTH_SHORT).show()
+    private fun generateRandomPassword(length: Int = 12): String {
+        val chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#\$%^&*()-_=+"
+        return (1..length)
+            .map { chars.random() }
+            .joinToString("")
+    }
+
+
+    //Envio de correo con INTENT (utilizamos para enviar una aplicación de correo que se
+    //encuentre instalada en el teléfono).
+    private fun sendEmail(email: String, newPassword: String) {
+        val subject = "Recuperación de Contraseña"
+        val message = """
+            Hola,
+
+            Hemos recibido una solicitud para restablecer tu contraseña. Aquí tienes tu nueva contraseña:
+
+            $newPassword
+
+            Te recomendamos que cambies esta contraseña después de iniciar sesión para mantener la seguridad de tu cuenta.
+
+            Saludos,
+            El Equipo de Soporte
+        """.trimIndent()
+
+        // trimIndent es una función de Kotlin que se utiliza para eliminar la indentación de un bloque de texto.
+        // Esta función permite que el texto se alinee correctamente cuando se utiliza en un literal de cadena de varias líneas (multiline string)
+
+        val intent = Intent(Intent.ACTION_SENDTO).apply {
+            data = Uri.parse("mailto:") // Solo aplicaciones de correo deben manejar esto
+            putExtra(Intent.EXTRA_EMAIL, arrayOf(email))
+            putExtra(Intent.EXTRA_SUBJECT, subject)
+            putExtra(Intent.EXTRA_TEXT, message)
+        }
+        try {
+            startActivity(Intent.createChooser(intent, "Elige una aplicación de correo"))
+        } catch (e: Exception) {
+            Toast.makeText(this, "No hay aplicaciones de correo instaladas.", Toast.LENGTH_SHORT).show()
+        }
     }
 
     private fun requestPasswordRecovery(email: String) {
-        //Aca deberiamos enviar la contraseña actualizada
-        sendEmail(email)
+        // Generar una nueva contraseña aleatoria
+        val newPassword = generateRandomPassword()
+        sendEmail(email, newPassword)
         val user = myPreferences.getLogin()
         if (user != null) {
             user.passwordUpdate = true
-            user.password = "soyUnaContrasenia" //Aca deberiamos hacer un metodo que cree una contraseña mas segura
+            user.password = newPassword // Asignar la nueva contraseña generada
             myPreferences.saveLogin(user, true)
         }
     }
+
+
+
+
 }
