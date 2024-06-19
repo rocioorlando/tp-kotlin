@@ -14,8 +14,9 @@ class MainActivity : ComponentActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        val admin = Login();
 
+        var admin = Login();
+        // Cargamos el layout que contiene el listview
         setContentView(R.layout.activity_main)
 
         myPreferences = MyPreferences(this)
@@ -31,9 +32,16 @@ class MainActivity : ComponentActivity() {
             val pass = password.text.toString()
 
             if (admin.validateCredentials(user, pass)) {
-                val newLogin = Login(user, pass, false)
-                myPreferences.saveLogin(newLogin, keepSession.isChecked)
-                checkUserStatus()
+                val existingUser = myPreferences.getLogin()
+                if (existingUser != null && existingUser.passwordUpdate) {
+                    val intent = Intent(this, ChangePasswordActivity::class.java)
+                    startActivity(intent)
+                } else {
+                    val newUser = Login(user, pass,"bmelgarejo@example.com", false)
+                    myPreferences.saveLogin(newUser, keepSession.isChecked)
+                    val intent = Intent(this, HomeActivity::class.java)
+                    startActivity(intent)
+                }
             } else {
                 Toast.makeText(this, "Usuario o contraseña incorrectos", Toast.LENGTH_SHORT).show()
             }
@@ -47,19 +55,10 @@ class MainActivity : ComponentActivity() {
         checkSession()
     }
 
-
-
     private fun checkSession() {
         val user = myPreferences.getLogin()
         val session = myPreferences.getSession()
         if (user != null && session) {
-            checkUserStatus()
-        }
-    }
-
-    private fun checkUserStatus() {
-        val user = myPreferences.getLogin()
-        if (user != null) {
             if (user.passwordUpdate) {
                 val intent = Intent(this, ChangePasswordActivity::class.java)
                 startActivity(intent)
@@ -70,5 +69,4 @@ class MainActivity : ComponentActivity() {
             finish()
         }
     }
-
 }

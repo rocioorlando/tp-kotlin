@@ -17,7 +17,7 @@
         android:id="@+id/btnMyInscriptions"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Mis incripciones" />
+        android:text="Mis inscripciones" />
 
     <Button
         android:id="@+id/btnStudentProfile"
@@ -30,4 +30,11 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="APIs" />
+
+    <Button
+        android:id="@+id/btnLogout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Cerrar sesión"
+        android:layout_marginTop="16dp" />
 </LinearLayout>

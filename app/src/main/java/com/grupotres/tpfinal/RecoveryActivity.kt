@@ -37,15 +37,10 @@ class RecoveryActivity : ComponentActivity() {
     }
 
     private fun generateRandomPassword(length: Int = 12): String {
-        val chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#\$%^&*()-_=+"
-        return (1..length)
-            .map { chars.random() }
-            .joinToString("")
+        val chars = "123"
+        return chars
     }
 
-
-    //Envio de correo con INTENT (utilizamos para enviar una aplicación de correo que se
-    //encuentre instalada en el teléfono).
     private fun sendEmail(email: String, newPassword: String) {
         val subject = "Recuperación de Contraseña"
         val message = """
@@ -61,9 +56,6 @@ class RecoveryActivity : ComponentActivity() {
             El Equipo de Soporte
         """.trimIndent()
 
-        // trimIndent es una función de Kotlin que se utiliza para eliminar la indentación de un bloque de texto.
-        // Esta función permite que el texto se alinee correctamente cuando se utiliza en un literal de cadena de varias líneas (multiline string)
-
         val intent = Intent(Intent.ACTION_SENDTO).apply {
             data = Uri.parse("mailto:") // Solo aplicaciones de correo deben manejar esto
             putExtra(Intent.EXTRA_EMAIL, arrayOf(email))
@@ -78,18 +70,15 @@ class RecoveryActivity : ComponentActivity() {
     }
 
     private fun requestPasswordRecovery(email: String) {
-        // Generar una nueva contraseña aleatoria
+        val login = Login()
+        val user = login.findUserByEmail(email)
         val newPassword = generateRandomPassword()
-        sendEmail(email, newPassword)
-        val user = myPreferences.getLogin()
         if (user != null) {
             user.passwordUpdate = true
-            user.password = newPassword // Asignar la nueva contraseña generada
+            user.password = newPassword
             myPreferences.saveLogin(user, true)
         }
+        sendEmail(email, newPassword)
+        Toast.makeText(this, "Si el correo está registrado, se ha enviado un correo de recuperación.", Toast.LENGTH_SHORT).show()
     }
-
-
-
-
 }

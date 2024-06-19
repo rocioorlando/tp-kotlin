@@ -7,17 +7,21 @@ import androidx.activity.ComponentActivity
 
 class HomeActivity : ComponentActivity() {
 
+    private lateinit var myPreferences: MyPreferences
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        // setContentView: Este método se utiliza para establecer el diseño de la actividad
-        // R.layout.activity_home: R es una clase generada automáticamente por Android que contiene referencias a todos los recursos de la aplicación.
+        // Establecemos el diseño de la actividad
         setContentView(R.layout.activity_home)
+
+        myPreferences = MyPreferences(this)
 
         val btnExamsInscription: Button = findViewById(R.id.btnExamsInscription)
         val btnMyInscriptions: Button = findViewById(R.id.btnMyInscriptions)
         val btnStudentProfile: Button = findViewById(R.id.btnStudentProfile)
         val btnAPIs: Button = findViewById(R.id.btnAPIs)
+        val btnLogout: Button = findViewById(R.id.btnLogout)
 
         btnExamsInscription.setOnClickListener {
             val intent = Intent(this, InscriptionActivity::class.java)
@@ -35,6 +39,13 @@ class HomeActivity : ComponentActivity() {
 
         btnAPIs.setOnClickListener {
 
+        }
+
+        btnLogout.setOnClickListener {
+            myPreferences.clearLogin()
+            val intent = Intent(this, MainActivity::class.java)
+            startActivity(intent)
+            finish()
         }
     }
 }

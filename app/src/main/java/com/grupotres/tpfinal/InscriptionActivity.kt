@@ -50,10 +50,13 @@ class InscriptionActivity : ComponentActivity() {
 
             val inscription = "$selectedSubject - $selectedCall"
             myPreferences.saveInscription(inscription)
+            val user = myPreferences.getLogin();
 
-            sendEmail(inscription)
+            if(user != null){
+                sendEmail(user.email, inscription)
+                Toast.makeText(this, "Inscripción enviada", Toast.LENGTH_SHORT).show()
+            }
 
-            Toast.makeText(this, "Inscripción enviada", Toast.LENGTH_SHORT).show()
         }
 
         btnViewInscriptions.setOnClickListener {
@@ -67,8 +70,8 @@ class InscriptionActivity : ComponentActivity() {
         }
     }
 
-    private fun sendEmail(inscription: String) {
-        val email = "destinatario@ejemplo.com"  // Reemplaza esto con el correo del destinatario
+    private fun sendEmail(email: String, inscription: String) {
+        val email = email
         val subject = "Confirmación de Inscripción"
         val message = """
             Hola,
