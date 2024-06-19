@@ -14,6 +14,7 @@ class MainActivity : ComponentActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        val admin = Login();
 
         setContentView(R.layout.activity_main)
 
@@ -29,9 +30,9 @@ class MainActivity : ComponentActivity() {
             val user = username.text.toString()
             val pass = password.text.toString()
 
-            if (validateCredentials(user, pass)) {
-                val newUser = Login(user, pass, false)
-                myPreferences.saveLogin(newUser, keepSession.isChecked)
+            if (admin.validateCredentials(user, pass)) {
+                val newLogin = Login(user, pass, false)
+                myPreferences.saveLogin(newLogin, keepSession.isChecked)
                 checkUserStatus()
             } else {
                 Toast.makeText(this, "Usuario o contraseña incorrectos", Toast.LENGTH_SHORT).show()
@@ -45,6 +46,8 @@ class MainActivity : ComponentActivity() {
 
         checkSession()
     }
+
+
 
     private fun checkSession() {
         val user = myPreferences.getLogin()
@@ -68,7 +71,4 @@ class MainActivity : ComponentActivity() {
         }
     }
 
-    private fun validateCredentials(username: String, password: String): Boolean {
-        return username == "bmelgarejo" && password == "1"
-    }
 }
