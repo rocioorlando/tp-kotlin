@@ -35,7 +35,8 @@ class HomeActivity : ComponentActivity() {
         }
 
         btnStudentProfile.setOnClickListener {
-
+            val intent = Intent(this, ProfileActivity::class.java)
+            startActivity(intent)
         }
 
         btnAPIs.setOnClickListener {

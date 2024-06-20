@@ -44,12 +44,23 @@ class MyPreferences(context: Context) {
     fun getInscriptions(): List<String> {
         val json = sharedPreferences.getString("inscriptions", null)
         return if (json != null) {
-            // se define el tipo de datos que se espera deserializar usando TypeToken. 
+            // se define el tipo de datos que se espera deserializar usando TypeToken.
             // En este caso, TypeToken<List<String>>() indica que esperamos una lista de string.
             val type = object : TypeToken<List<String>>() {}.type
             gson.fromJson(json, type)
         } else {
             emptyList()
         }
+    }
+
+    fun saveUserProfile(userProfile: Profile) {
+        val editor = sharedPreferences.edit()
+        editor.putString("profile", gson.toJson(userProfile))
+        editor.apply()
+    }
+
+    fun getUserProfile(): Profile? {
+        val json = sharedPreferences.getString("profile", null)
+        return gson.fromJson(json, Profile::class.java)
     }
 }

@@ -79,6 +79,6 @@ class RecoveryActivity : ComponentActivity() {
             myPreferences.saveLogin(user, true)
         }
         sendEmail(email, newPassword)
-        Toast.makeText(this, "Si el correo está registrado, se ha enviado un correo de recuperación.", Toast.LENGTH_SHORT).show()
+        Toast.makeText(this, "Si el correo está registrado, se envió un correo de recuperación.", Toast.LENGTH_SHORT).show()
     }
 }
