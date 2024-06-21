@@ -7,6 +7,15 @@
     android:gravity="center"
     android:background="@android:color/white">
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Mis Inscripciones"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        android:textColor="@android:color/black"
+        android:layout_marginBottom="16dp"/>
+
     <ListView
         android:id="@+id/listViewInscription"
         android:layout_width="match_parent"
@@ -29,5 +38,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Volver"
-        android:layout_marginTop="16dp"/>
+        android:layout_marginTop="16dp"
+        style="@style/ButtonStyleBlueBorder" />
+
 </LinearLayout>

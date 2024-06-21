@@ -1,40 +1,66 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     android:padding="16dp"
     tools:context=".HomeActivity">
+
+    <TextView
+        android:id="@+id/tvTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Menú"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        android:textColor="@android:color/black"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="16dp" />
 
     <Button
         android:id="@+id/btnExamsInscription"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Inscripción a exámenes" />
+        android:text="Inscripción a exámenes"
+        style="@style/ButtonStyleBlueBorder"
+        android:layout_below="@id/tvTitle"
+        android:layout_marginBottom="16dp"
+        android:layout_marginTop="16dp" />
 
     <Button
         android:id="@+id/btnMyInscriptions"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Mis inscripciones" />
+        android:text="Mis inscripciones"
+        style="@style/ButtonStyleBlueBorder"
+        android:layout_below="@id/btnExamsInscription"
+        android:layout_marginBottom="16dp" />
 
     <Button
         android:id="@+id/btnStudentProfile"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Perfil del estudiante" />
+        android:text="Perfil del estudiante"
+        style="@style/ButtonStyleBlueBorder"
+        android:layout_below="@id/btnMyInscriptions"
+        android:layout_marginBottom="16dp" />
 
     <Button
         android:id="@+id/btnAPIs"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="APIs" />
+        android:text="APIs"
+        style="@style/ButtonStyleBlueBorder"
+        android:layout_below="@id/btnStudentProfile"
+        android:layout_marginBottom="300dp" />
 
     <Button
         android:id="@+id/btnLogout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Cerrar sesión"
-        android:layout_marginTop="16dp" />
-</LinearLayout>
+        style="@style/ButtonStyleBlueBorder"
+        android:layout_alignParentBottom="true"
+        android:layout_marginTop="8dp" />
+
+</RelativeLayout>

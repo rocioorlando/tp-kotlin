@@ -13,7 +13,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:layout_marginBottom="32dp"
-        android:src="@drawable/ic_launcher_foreground" />
+        android:src="@drawable/logo_istic" />
 
     <EditText
         android:id="@+id/username"
@@ -47,7 +47,8 @@
         android:layout_height="wrap_content"
         android:minHeight="48dp"
         android:text="Ingresar"
-        android:layout_marginBottom="16dp" />
+        android:layout_marginBottom="16dp"
+        style="@style/ButtonStyleBlueBorder" />
 
     <TextView
         android:id="@+id/forgotPassword"

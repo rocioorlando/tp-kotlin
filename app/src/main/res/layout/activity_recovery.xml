@@ -8,6 +8,16 @@
     android:background="@android:color/white"
     android:paddingBottom="16dp">
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Recuperar contraseña"
+        android:textSize="24sp"
+        android:textColor="@android:color/black"
+        android:layout_gravity="center"
+        android:textStyle="bold"
+        android:layout_marginBottom="24dp"/>
+
     <ImageView
         android:id="@+id/logo"
         android:layout_width="wrap_content"
@@ -33,7 +43,8 @@
         android:background="@color/blue"
         android:textColor="@android:color/black"
         android:padding="12dp"
-        android:layout_marginBottom="16dp"/>
+        android:layout_marginBottom="16dp"
+        style="@style/ButtonStyleBlueBorder" />
 
     <Button
         android:id="@+id/backButton"
@@ -43,6 +54,7 @@
         android:background="@color/gray"
         android:textColor="@android:color/black"
         android:padding="12dp"
-        android:layout_marginBottom="16dp"/>
+        android:layout_marginBottom="16dp"
+        style="@style/ButtonStyleBlueBorder" />
 
 </LinearLayout>
