@@ -4,6 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
 import androidx.activity.ComponentActivity
+import com.grupotres.tpfinal.APIActivity
 
 class HomeActivity : ComponentActivity() {
 
@@ -38,7 +39,8 @@ class HomeActivity : ComponentActivity() {
         }
 
         btnAPIs.setOnClickListener {
-
+            val intent = Intent(this, APIActivity::class.java)
+            startActivity(intent)
         }
 
         btnLogout.setOnClickListener {

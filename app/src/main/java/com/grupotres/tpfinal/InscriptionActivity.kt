@@ -84,6 +84,8 @@ class InscriptionActivity : ComponentActivity() {
 
             Saludos,
             El Equipo de Inscripción
+            
+            
         """.trimIndent()
 
         val intent = Intent(Intent.ACTION_SENDTO).apply {
