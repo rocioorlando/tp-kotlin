@@ -1,66 +1,104 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="16dp"
     tools:context=".HomeActivity">
 
-    <TextView
-        android:id="@+id/tvTitle"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:id="@+id/header"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Menú"
-        android:textSize="24sp"
-        android:textStyle="bold"
-        android:textColor="@android:color/black"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="16dp" />
+        android:background="#003366"
+        android:orientation="horizontal"
+        android:padding="8dp"
+        android:gravity="center_vertical"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/tvHeaderTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Menú"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            android:textColor="@android:color/white"
+            android:layout_gravity="center_horizontal"/>
+    </LinearLayout>
 
     <Button
         android:id="@+id/btnExamsInscription"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:text="Inscripción a exámenes"
         style="@style/ButtonStyleBlueBorder"
-        android:layout_below="@id/tvTitle"
-        android:layout_marginBottom="16dp"
-        android:layout_marginTop="16dp" />
+        app:layout_constraintTop_toBottomOf="@id/header"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp" />
 
     <Button
         android:id="@+id/btnMyInscriptions"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:text="Mis inscripciones"
         style="@style/ButtonStyleBlueBorder"
-        android:layout_below="@id/btnExamsInscription"
-        android:layout_marginBottom="16dp" />
+        app:layout_constraintTop_toBottomOf="@id/btnExamsInscription"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp" />
 
     <Button
         android:id="@+id/btnStudentProfile"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:text="Perfil del estudiante"
         style="@style/ButtonStyleBlueBorder"
-        android:layout_below="@id/btnMyInscriptions"
-        android:layout_marginBottom="16dp" />
+        app:layout_constraintTop_toBottomOf="@id/btnMyInscriptions"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp" />
 
     <Button
         android:id="@+id/btnAPIs"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:text="APIs"
         style="@style/ButtonStyleBlueBorder"
-        android:layout_below="@id/btnStudentProfile"
-        android:layout_marginBottom="300dp" />
+        app:layout_constraintTop_toBottomOf="@id/btnStudentProfile"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp" />
 
     <Button
         android:id="@+id/btnLogout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Cerrar sesión"
         style="@style/ButtonStyleBlueBorder"
-        android:layout_alignParentBottom="true"
-        android:layout_marginTop="8dp" />
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="16dp"
+        android:text="Cerrar sesión"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/btnAPIs"
+        app:layout_constraintVertical_bias="1.0" />
 
-</RelativeLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

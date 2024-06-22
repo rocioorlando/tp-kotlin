@@ -5,7 +5,8 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:padding="16dp"
-    tools:context=".MainActivity">
+    tools:context=".MainActivity"
+    android:background="@color/white">
 
     <ImageView
         android:id="@+id/logo"
@@ -22,7 +23,8 @@
         android:minHeight="48dp"
         android:hint="Usuario"
         android:inputType="text"
-        android:layout_marginBottom="16dp" />
+        android:layout_marginBottom="16dp"
+        android:background="@drawable/rounded_edittext" />
 
     <EditText
         android:id="@+id/password"
@@ -31,7 +33,8 @@
         android:minHeight="48dp"
         android:hint="Contraseña"
         android:inputType="textPassword"
-        android:layout_marginBottom="16dp" />
+        android:layout_marginBottom="16dp"
+        android:background="@drawable/rounded_edittext" />
 
     <CheckBox
         android:id="@+id/keepSession"
@@ -48,7 +51,8 @@
         android:minHeight="48dp"
         android:text="Ingresar"
         android:layout_marginBottom="16dp"
-        style="@style/ButtonStyleBlueBorder" />
+        android:background="@drawable/rounded_button"
+        android:textColor="@color/white" />
 
     <TextView
         android:id="@+id/forgotPassword"
