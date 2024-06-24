@@ -23,10 +23,10 @@ data class Character(
 interface RickAndMortyApiService {
     @GET("character")
     fun getCharacters(
-        @Query("name") name: String?,        // Parámetro de consulta para el nombre del personaje
-        @Query("status") status: String?,    // Parámetro de consulta para el estado del personaje
-        @Query("species") species: String?,  // Parámetro de consulta para la especie del personaje
-        @Query("type") type: String?,        // Parámetro de consulta para el tipo del personaje
-        @Query("gender") gender: String?     // Parámetro de consulta para el género del personaje
-    ): Call<CharacterResponse>              // Llamada que devuelve una respuesta con una lista de personajes
+        @Query("name") name: String?,
+        @Query("status") status: String?,
+        @Query("species") species: String?,
+        @Query("type") type: String?,
+        @Query("gender") gender: String?
+    ): Call<CharacterResponse>
 }

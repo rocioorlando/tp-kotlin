@@ -41,7 +41,8 @@
             android:layout_height="wrap_content"
             android:hint="Nombre"
             android:inputType="textPersonName"
-            android:layout_marginBottom="16dp"/>
+            android:layout_marginBottom="16dp"
+            android:minHeight="48dp"/>
 
         <EditText
             android:id="@+id/lastName"
@@ -49,7 +50,8 @@
             android:layout_height="wrap_content"
             android:hint="Apellido"
             android:inputType="textPersonName"
-            android:layout_marginBottom="16dp"/>
+            android:layout_marginBottom="16dp"
+            android:minHeight="48dp"/>
 
         <EditText
             android:id="@+id/dob"
@@ -57,14 +59,15 @@
             android:layout_height="wrap_content"
             android:hint="Fecha de Nacimiento"
             android:inputType="date"
-            android:layout_marginBottom="16dp"/>
-
+            android:layout_marginBottom="16dp"
+            android:minHeight="48dp"/>
 
         <Spinner
             android:id="@+id/documentType"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="16dp"/>
+            android:layout_marginBottom="16dp"
+            android:minHeight="48dp"/>
 
         <EditText
             android:id="@+id/documentNumber"
@@ -72,7 +75,8 @@
             android:layout_height="wrap_content"
             android:hint="DNI/Pasaporte"
             android:inputType="number"
-            android:layout_marginBottom="16dp"/>
+            android:layout_marginBottom="16dp"
+            android:minHeight="48dp"/>
 
         <Button
             android:id="@+id/saveButton"
@@ -80,14 +84,16 @@
             android:layout_height="wrap_content"
             android:text="Guardar"
             android:layout_marginBottom="16dp"
-            style="@style/ButtonStyleBlueBorder" />
+            style="@style/ButtonStyleBlueBorder"
+            android:minHeight="48dp" />
 
         <Button
             android:id="@+id/backButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Volver"
-            style="@style/ButtonStyleBlueBorder" />
+            style="@style/ButtonStyleBlueBorder"
+            android:minHeight="48dp" />
 
     </LinearLayout>
 
