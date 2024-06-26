@@ -7,6 +7,7 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
 import androidx.activity.ComponentActivity
+import java.util.regex.Pattern
 
 class RecoveryActivity : ComponentActivity() {
 
@@ -24,16 +25,21 @@ class RecoveryActivity : ComponentActivity() {
 
         sendEmailButton.setOnClickListener {
             val email = emailEditText.text.toString()
-            if (email.isNotBlank()) {
+            if (email.isNotBlank() && isValidEmail(email)) {
                 requestPasswordRecovery(email)
             } else {
-                Toast.makeText(this, "Por favor ingrese su correo electrónico", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, "Por favor ingrese un correo electrónico válido", Toast.LENGTH_SHORT).show()
             }
         }
 
         backButton.setOnClickListener {
             finish()
         }
+    }
+
+    private fun isValidEmail(email: String): Boolean {
+        val emailPattern = "[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+"
+        return Pattern.compile(emailPattern).matcher(email).matches()
     }
 
     private fun generateRandomPassword(length: Int = 12): String {

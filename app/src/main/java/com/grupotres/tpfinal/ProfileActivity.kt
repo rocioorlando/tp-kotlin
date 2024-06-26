@@ -3,10 +3,16 @@ package com.grupotres.tpfinal
 import android.os.Bundle
 import android.widget.*
 import androidx.activity.ComponentActivity
+import java.util.Date
+import java.text.SimpleDateFormat
+import java.util.Calendar
+import java.util.Locale
 
 class ProfileActivity : ComponentActivity() {
 
     private lateinit var myPreferences: MyPreferences
+    private val dateFormat = SimpleDateFormat("dd/MM/yyyy", Locale.getDefault())
+    private val calendar = Calendar.getInstance()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -32,12 +38,13 @@ class ProfileActivity : ComponentActivity() {
             val documentType = documentTypeSpinner.selectedItem.toString()
             val documentNumber = documentNumberEditText.text.toString()
 
-            if (validateFields(firstName, lastName, dob, documentNumber)) {
+            val (isValid, message) = validateFields(firstName, lastName, dob, documentNumber)
+            if (isValid) {
                 val userProfile = Profile(firstName, lastName, dob, documentType, documentNumber)
                 myPreferences.saveUserProfile(userProfile)
                 Toast.makeText(this, "Datos guardados exitosamente", Toast.LENGTH_SHORT).show()
             } else {
-                Toast.makeText(this, "Debe completar todos los campos", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
             }
         }
 
@@ -48,8 +55,36 @@ class ProfileActivity : ComponentActivity() {
         loadUserProfile()
     }
 
-    private fun validateFields(firstName: String, lastName: String, dob: String, documentNumber: String): Boolean {
-        return firstName.isNotBlank() && lastName.isNotBlank() && dob.isNotBlank() && documentNumber.isNotBlank()
+    private fun validateFields(firstName: String, lastName: String, dob: String, documentNumber: String): Pair<Boolean, String> {
+        if (firstName.isBlank()) return Pair(false, "El nombre no puede estar vacío")
+        if (lastName.isBlank()) return Pair(false, "El apellido no puede estar vacío")
+        if (dob.isBlank()) return Pair(false, "La fecha de nacimiento no puede estar vacía")
+        if (!isValidAge(dob)) return Pair(false, "El usuario debe tener al menos 13 años")
+        if (documentNumber.isBlank()) return Pair(false, "El número de documento no puede estar vacío")
+        if (!isDocumentNumberValid(documentNumber)) return Pair(false, "El número de documento debe tener 8 dígitos")
+
+        return Pair(true, "")
+    }
+
+    private fun isValidAge(dob: String): Boolean {
+        val dateOfBirth: Date = try {
+            dateFormat.parse(dob)
+        } catch (e: Exception) {
+            return false
+        }
+
+        // Calculamos la fecha mínima para tener al menos 13 años
+        calendar.time = dateOfBirth
+        calendar.add(Calendar.YEAR, 13)
+        val minDateForAge = calendar.time
+
+        // Comparamos con la fecha actual
+        val currentDate = Date()
+        return currentDate >= minDateForAge
+    }
+
+    private fun isDocumentNumberValid(documentNumber: String): Boolean {
+        return documentNumber.length == 8 && documentNumber.all { it.isDigit() }
     }
 
     private fun loadUserProfile() {
